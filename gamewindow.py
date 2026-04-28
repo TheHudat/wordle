@@ -1,7 +1,9 @@
 from tkinter import *
 from tkinter import ttk
 from constants import *
+from gamesquare import GameSquare
 
+#TODO make GameWindow a frame class and generate the starting game board on init 
 class GameWindow:
     def __init__(self, root):
         root.title("Wordle")
@@ -18,11 +20,11 @@ class GameWindow:
 
     
     def generate_square_row(self, parent, row_number):
-        letter_square = ttk.Frame(parent, width = GAME_SQUARE_WIDTH, height = GAME_SQUARE_HEIGHT, borderwidth = 5, relief="ridge")
-        letter_square2 = ttk.Frame(parent, width = GAME_SQUARE_WIDTH, height = GAME_SQUARE_HEIGHT, borderwidth = 5, relief="ridge")
-        letter_square3 = ttk.Frame(parent, width = GAME_SQUARE_WIDTH, height = GAME_SQUARE_HEIGHT, borderwidth = 5, relief="ridge")
-        letter_square4 = ttk.Frame(parent, width = GAME_SQUARE_WIDTH, height = GAME_SQUARE_HEIGHT, borderwidth = 5, relief="ridge")
-        letter_square5 = ttk.Frame(parent, width = GAME_SQUARE_WIDTH, height = GAME_SQUARE_HEIGHT, borderwidth = 5, relief="ridge")
+        letter_square = GameSquare(parent)
+        letter_square2 = GameSquare(parent)
+        letter_square3 = GameSquare(parent)
+        letter_square4 = GameSquare(parent)
+        letter_square5 = GameSquare(parent)
 
         letter_square.grid(column = 0, row = row_number, sticky=(E, N))
         letter_square2.grid(column = 1, row = row_number, sticky=(E, N))
