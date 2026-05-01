@@ -9,17 +9,21 @@ class Wordle(Tk):
         super().__init__()
         #start window and set title on top bar
         self.title("Wordle")
-        self.active_row = IntVar()
-        self.active_row.set(0)
-        self.active_column = IntVar()
-        self.active_column.set(0)
+        self.active_row = 0
+        self.active_column = 0
         
         #initiate the window and display the background      
-        self.game_window = ttk.Frame(self, padding=(3, 3, 12, 12))
+        self.game_window = ttk.Frame(self, padding=(3, 3, 5, 5))
         self.game_window.grid(column=0, row=0, sticky=(N, W, E, S))
 
         #create square widgets and display the game board
         self.squares = self.generate_starting_squares()
+
+        #create styles for the different square states
+        self.colorY = ttk.Style()
+        self.colorY.configure("ColorYellow.TFrame", background="yellow")
+        self.colorG = ttk.Style()
+        self.colorG.configure("ColorGreen.TFrame", background="green")
     
     def generate_starting_squares(self):
         #creates a list of lists containing GameSquares to fill the game board
@@ -33,14 +37,15 @@ class Wordle(Tk):
     
     def button_input(self, event):
         letter = event.char.capitalize()
-        row = self.active_row.get()
-        column = self.active_column.get()
+        row = self.active_row
+        column = self.active_column
         if letter in LETTERS:
             self.squares[row][column].letter_text.set(letter)
         
             #move to next active input square
             if column < 4:
-                self.active_column.set(column + 1)
+                self.active_column += 1
             else:
-                self.active_row.set(row + 1)
-                self.active_column.set(0)
+                self.squares[row][column].set_square_color()
+                self.active_row += 1
+                self.active_column = 0
