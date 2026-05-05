@@ -21,6 +21,10 @@ class GameSquare(ttk.Frame):
         self.letter = ttk.Label(self, textvariable=self.letter_text, font=("arial", -90), anchor="center")
         self.letter.grid(row=0, column=0)
 
-    def set_square_color(self):
-        self.configure(style="ColorGreen.TFrame")
-        self.letter.configure(background="green")
+    def set_square_color(self, color):
+        if color is "g":
+            self.configure(style="ColorGreen.TFrame")
+            self.letter.configure(background="green")
+        elif color is "y":
+            self.configure(style="ColorYellow.TFrame")
+            self.letter.configure(background="yellow")
