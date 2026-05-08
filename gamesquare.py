@@ -28,3 +28,8 @@ class GameSquare(ttk.Frame):
         elif color is "y":
             self.configure(style="ColorYellow.TFrame")
             self.letter.configure(background="yellow")
+    
+    def reset_square(self):
+        self.configure(style="TFrame")
+        self.letter.configure(background="#d9d9d9")
+        self.letter_text.set("")

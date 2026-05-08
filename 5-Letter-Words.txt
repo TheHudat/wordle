@@ -2869,6 +2869,7 @@ types
 udder
 ulcer
 ultra
+umbra
 uncle
 uncut
 under

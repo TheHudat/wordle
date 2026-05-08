@@ -1,5 +1,3 @@
-from tkinter import *
-from tkinter import ttk
 from game import Wordle
 
 def main():
